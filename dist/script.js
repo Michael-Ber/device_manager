@@ -90,10 +90,172 @@
 /*!*******************************!*\
   !*** ./src/assets/js/main.js ***!
   \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _modules_carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/carousel */ "./src/assets/js/modules/carousel.js");
+/* harmony import */ var _modules_accordeon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/accordeon */ "./src/assets/js/modules/accordeon.js");
+/* harmony import */ var _modules_carousel_team__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/carousel_team */ "./src/assets/js/modules/carousel_team.js");
 
 
+
+window.addEventListener('DOMContentLoaded', () => {
+  Object(_modules_accordeon__WEBPACK_IMPORTED_MODULE_1__["default"])('.services__inner_accordeon', '.services__inner_accordeon-item-content', '.services__inner_accordeon-item-title', 'services__inner_accordeon-item-content_active');
+  Object(_modules_carousel__WEBPACK_IMPORTED_MODULE_0__["default"])('.testimonials__content_carousel', '.testimonials__content_carousel-wrapper-track', '.testimonials__content_carousel-wrapper-track-item', '.testimonials__content_carousel-wrapper-arrow_up', '.testimonials__content_carousel-wrapper-arrow_down');
+  Object(_modules_carousel_team__WEBPACK_IMPORTED_MODULE_2__["default"])('.ourteam__inner_carousel-wrapper', '.ourteam__inner_carousel-wrapper-photo-track', '.ourteam__inner_carousel-wrapper-content-track', '.ourteam__inner_carousel-wrapper-photo', '.ourteam__inner_carousel-wrapper-content', '.ourteam__inner_carousel-wrapper-photo-track-item', '.ourteam__inner_carousel-wrapper-content-track-text', '.ourteam__inner_carousel-wrapper-arrow_left', '.ourteam__inner_carousel-wrapper-arrow_right', 'active', 'active_block');
+});
+
+/***/ }),
+
+/***/ "./src/assets/js/modules/accordeon.js":
+/*!********************************************!*\
+  !*** ./src/assets/js/modules/accordeon.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const accordeon = (parentSelector, contentSelector, triggerSelector, activeClass) => {
+  const parent = document.querySelector(parentSelector),
+        content = parent.querySelectorAll(contentSelector),
+        button = parent.querySelectorAll(triggerSelector);
+  button.forEach((item, i) => {
+    item.addEventListener('click', function () {
+      removeActive();
+
+      if (!this.nextElementSibling.classList.contains(activeClass)) {
+        this.nextElementSibling.classList.add(activeClass); // this.nextElementSibling.style.maxHeight = this.nextElementSibling.scrollHeight + 80 + "px";
+      } else {
+        this.nextElementSibling.classList.remove(activeClass); // this.nextElementSibling.style.maxHeight = 0;
+      }
+    });
+  });
+
+  function removeActive() {
+    content.forEach(item => {
+      item.classList.remove(activeClass);
+    });
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (accordeon);
+
+/***/ }),
+
+/***/ "./src/assets/js/modules/carousel.js":
+/*!*******************************************!*\
+  !*** ./src/assets/js/modules/carousel.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const carousel = (parentSelector, trackSelector, itemSelector, prevSelector, nextSelector, itemInFrame = 2, vertical = true) => {
+  const parent = document.querySelector(parentSelector),
+        track = parent.querySelector(trackSelector),
+        items = parent.querySelectorAll(itemSelector),
+        prev = parent.querySelector(prevSelector),
+        next = parent.querySelector(nextSelector),
+        frameHeight = +window.getComputedStyle(parent).height.slice(0, -2) + 70;
+  let offset = 0,
+      trackHeight;
+
+  if (itemInFrame > 1) {
+    trackHeight = frameHeight * items.length / itemInFrame;
+  } else {
+    trackHeight = frameHeight * items.length;
+  }
+
+  track.style.height = trackHeight + 'px';
+  prev.addEventListener('click', () => {
+    if (offset <= 0) {
+      offset = trackHeight - frameHeight;
+    } else {
+      offset -= frameHeight;
+    }
+
+    if (vertical) {
+      track.style.transform = `translateY(-${offset}px)`;
+    } else {
+      track.style.transform = `translateX(-${offset}px)`;
+    }
+  });
+  next.addEventListener('click', () => {
+    if (offset >= trackHeight - frameHeight) {
+      offset = 0;
+    } else {
+      offset += frameHeight;
+    }
+
+    if (vertical) {
+      track.style.transform = `translateY(-${offset}px)`;
+    } else {
+      track.style.transform = `translateX(-${offset}px)`;
+    }
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (carousel);
+
+/***/ }),
+
+/***/ "./src/assets/js/modules/carousel_team.js":
+/*!************************************************!*\
+  !*** ./src/assets/js/modules/carousel_team.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const carouselTeam = (parentSelector, photoTrackSelector, contentTrackSelector, photoFrameSelector, contentFrameSelector, photoItemSelector, contentItemSelector, prevSelector, nextSelector, photoActiveClass, contentActiveClass) => {
+  const parent = document.querySelector(parentSelector),
+        photoTrack = parent.querySelector(photoTrackSelector),
+        contentTrack = parent.querySelector(contentTrackSelector),
+        photoFrame = parent.querySelector(photoFrameSelector),
+        contentFrame = parent.querySelector(contentFrameSelector),
+        photoItem = parent.querySelectorAll(photoItemSelector),
+        contentItem = parent.querySelectorAll(contentItemSelector),
+        prev = parent.querySelector(prevSelector),
+        next = parent.querySelector(nextSelector),
+        photoFrameWidth = +window.getComputedStyle(photoFrame).width.slice(0, -2),
+        contentFrameWidth = +window.getComputedStyle(contentFrame).width.slice(0, -2);
+  let offsetPhoto,
+      offsetContent,
+      photoTrackWidth = photoFrameWidth * photoItem.length,
+      contentTrackWidth = contentFrameWidth * contentItem.length,
+      slideIndex = 1;
+  photoTrack.style.width = photoTrackWidth + 'px';
+  contentTrack.style.width = contentTrackWidth + 'px';
+
+  (function init() {
+    offsetPhoto = slideIndex * photoFrameWidth; // offsetContent = slideIndex * contentFrameWidth;
+
+    photoTrack.style.transform = `translateX(-${offsetPhoto}px)`; // contentTrack.style.transform = `translateX(-${offsetContent}px)`;
+  })();
+
+  prev.addEventListener('click', () => {
+    console.log('here');
+  });
+  next.addEventListener('click', () => {
+    if (offsetPhoto >= photoTrackWidth) {
+      offsetPhoto = 0;
+      offsetContent = 0;
+    } else {
+      offsetPhoto += photoFrameWidth;
+      offsetContent += contentFrameWidth;
+    }
+
+    photoTrack.style.transform = `translateX(-${offsetPhoto}px)`;
+    contentTrack.style.transform = `translateX(-${offsetContent}px)`;
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (carouselTeam);
 
 /***/ })
 
