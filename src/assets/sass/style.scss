@@ -83,6 +83,7 @@
         font-weight: 400;
         text-transform: uppercase;
         color: #ffffff;
+        border: none;
         cursor: pointer;
         &:hover {
             background-color: lighten($main-color, 10%);
@@ -100,6 +101,7 @@
         font-weight: 700;
         text-transform: uppercase;
         color: $main-color;
+        border: none;
         cursor: pointer;
         &:hover {
             background-color: darken(#fff, 10%);
@@ -594,29 +596,36 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                &-photo {
+                &-frame {
                     width: 480px;
-                    margin-bottom: 45px;
+                    overflow: hidden;
+                }
+                &-photo {
+                    width: 160px;
+                    margin: 0 auto 45px auto;
+                    &-track {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        transition: .5s all;
+                        &-item {
+                            opacity: 0.2;
+                            transform: scale(.5);
+                            transition: .5s all;
+                        }
+                    }
+                }
+                &-content {
+                    width: 600px;
                     overflow: hidden;
                     &-track {
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        &-item {
-                            opacity: 0.2;
-                            transform: scale(.5);
-                        }
-                    }
-                }
-                &-content {
-                    &-track {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
                         text-align: center;
+                        transition: .5s all;
                         &-text {
                             width: 600px;
-                            display: none;
                         }
                         &-name {
                             @include raleway();

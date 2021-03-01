@@ -469,38 +469,45 @@ h6 {
         flex-direction: column;
         justify-content: center;
         align-items: center; }
-        .ourteam__inner_carousel-wrapper-photo {
+        .ourteam__inner_carousel-wrapper-frame {
           width: 480px;
-          margin-bottom: 45px;
           overflow: hidden; }
+        .ourteam__inner_carousel-wrapper-photo {
+          width: 160px;
+          margin: 0 auto 45px auto; }
           .ourteam__inner_carousel-wrapper-photo-track {
             display: flex;
             justify-content: center;
-            align-items: center; }
+            align-items: center;
+            transition: .5s all; }
             .ourteam__inner_carousel-wrapper-photo-track-item {
               opacity: 0.2;
-              transform: scale(0.5); }
-        .ourteam__inner_carousel-wrapper-content-track {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          text-align: center; }
-          .ourteam__inner_carousel-wrapper-content-track-text {
-            width: 600px;
-            display: none; }
-          .ourteam__inner_carousel-wrapper-content-track-name {
-            font-family: 'Raleway', sans-serif;
-            font-size: 18px;
-            line-height: 25px;
-            font-weight: 700;
-            color: #061e37;
-            margin-bottom: 20px; }
-          .ourteam__inner_carousel-wrapper-content-track-descr {
-            font-family: 'Raleway', sans-serif;
-            font-size: 15px;
-            line-height: 25px;
-            font-weight: 400;
-            color: #90a4ae; }
+              transform: scale(0.5);
+              transition: .5s all; }
+        .ourteam__inner_carousel-wrapper-content {
+          width: 600px;
+          overflow: hidden; }
+          .ourteam__inner_carousel-wrapper-content-track {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: .5s all; }
+            .ourteam__inner_carousel-wrapper-content-track-text {
+              width: 600px; }
+            .ourteam__inner_carousel-wrapper-content-track-name {
+              font-family: 'Raleway', sans-serif;
+              font-size: 18px;
+              line-height: 25px;
+              font-weight: 700;
+              color: #061e37;
+              margin-bottom: 20px; }
+            .ourteam__inner_carousel-wrapper-content-track-descr {
+              font-family: 'Raleway', sans-serif;
+              font-size: 15px;
+              line-height: 25px;
+              font-weight: 400;
+              color: #90a4ae; }
         .ourteam__inner_carousel-wrapper-arrow_left {
           position: absolute;
           border: 20px solid transparent;

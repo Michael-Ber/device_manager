@@ -1,6 +1,7 @@
 import carousel from "./modules/carousel";
 import accordeon from "./modules/accordeon";
 import carouselTeam from './modules/carousel_team';
+import form from './modules/form';
 
 window.addEventListener('DOMContentLoaded', () => {
     accordeon(
@@ -28,5 +29,10 @@ window.addEventListener('DOMContentLoaded', () => {
         '.ourteam__inner_carousel-wrapper-arrow_right',
         'active',
         'active_block'
+    );
+
+    form(
+        '.contactus__inner_content-form',
+        '.contactus'
     );
 });
