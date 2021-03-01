@@ -2,6 +2,7 @@ import carousel from "./modules/carousel";
 import accordeon from "./modules/accordeon";
 import carouselTeam from './modules/carousel_team';
 import form from './modules/form';
+import video from './modules/video';
 
 window.addEventListener('DOMContentLoaded', () => {
     accordeon(
@@ -35,4 +36,6 @@ window.addEventListener('DOMContentLoaded', () => {
         '.contactus__inner_content-form',
         '.contactus'
     );
+
+    video('player', '.intro__content_video-wrapper-play');
 });

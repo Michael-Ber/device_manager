@@ -10,8 +10,8 @@ const postcss = require("gulp-postcss");
 const imagemin = require('gulp-imagemin');
 
 
-const dist = "../../../js/OpenServer/domains/serviceManager";
-// const dist = "./dist";
+// const dist = "../../../js/OpenServer/domains/serviceManager";
+const dist = "./dist";
 
 gulp.task("copy-html", () => {
     return gulp.src("./src/index.html")
@@ -61,15 +61,15 @@ gulp.task("build-js", () => {
 gulp.task('imagemin', function() {
   return gulp.src('./src/assets/img/**/*.*')
       .pipe(imagemin())
-      .pipe(gulp.dest('../../../js/OpenServer/domains/serviceManager/assets/img'));
-      // .pipe(gulp.dest('./dist/assets/img'));
+      // .pipe(gulp.dest('../../../js/OpenServer/domains/serviceManager/assets/img'));
+      .pipe(gulp.dest('./dist/assets/img'));
 });
 
 gulp.task('iconsmin', function() {
   return gulp.src('./src/assets/icons/**/*.*')
       .pipe(imagemin())
-      .pipe(gulp.dest('../../../js/OpenServer/domains/serviceManager/assets/icons'));
-      // .pipe(gulp.dest('./dist/assets/icons'));
+      // .pipe(gulp.dest('../../../js/OpenServer/domains/serviceManager/assets/icons'));
+      .pipe(gulp.dest('./dist/assets/icons'));
 });
 
 gulp.task("watch", () => {
