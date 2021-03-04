@@ -808,8 +808,8 @@ h6 {
             display: none; }
   .ourteam__inner {
     max-width: unset; }
-    .ourteam__inner_carousel-wrapper-content-track-text {
-      width: unset; }
+    .ourteam__inner_carousel-wrapper-content {
+      width: 500px; }
   .contactus__inner_content-form {
     grid-template-columns: 250px 250px; }
   .footer__wrapper_up-logo-text span {

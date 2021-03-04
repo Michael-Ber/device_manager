@@ -1145,8 +1145,11 @@
         .ourteam {
             &__inner {
                 max-width: unset;
-                &_carousel-wrapper-content-track-text {
-                    width: unset;
+                &_carousel-wrapper-content {
+                    width: 500px;
+                    // &-track-text {
+                    //     width: unset;
+                    // }
                 }
             }
         }
